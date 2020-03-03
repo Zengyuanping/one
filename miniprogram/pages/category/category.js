@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    message:"哈哈哈"
 
+  },
+  click(){
+    this.setData({
+      message:"呵呵呵"
+    })
   },
 
   /**
