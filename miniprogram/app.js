@@ -1,5 +1,6 @@
                           //app.js
 App({
+  //小程序初始化完成时
   onLaunch: function () {
     
     if (!wx.cloud) {
@@ -15,6 +16,24 @@ App({
       })
     }
 
-    this.globalData = {}
+    //this.globalData = {}
+  },
+
+  //小程序显示出来时
+  onShow:function(option){
+    //获取用户信息
+    // wx.getUserInfo({
+    //   success:function(res){
+    //     console.log(res)
+    //   }
+    // })
+  },
+  //小程序隐藏时
+  onHide:function(){},
+  //小程序产生一些错误
+  onError:function(msg){},
+  globalData:{
+    name:'jacky平',
+    age:18
   }
 })

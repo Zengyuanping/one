@@ -1,4 +1,13 @@
 // pages/home/home.js
+//getApp()获取App()产生的示例对象
+// const app = getApp()
+// console.log(app.globalData.name);
+// console.log(app.globalData.age);
+// const name = app.globalData.name;
+// const age = app.globalData.age;
+
+//注册一个页面
+//页面也有自己的生命周期函数
 Page({
 
   /**
@@ -28,8 +37,13 @@ Page({
         age: 16
       },
     ],
-    counter:0
+    counter:0,
+    list:[],
+    message:"Lisa榕"
 
+  },
+  handleGetUserInfo(event){
+    console.log(event)
   },
   handleBtnClick(){
     // 1.错误的做法：界面是不会刷新的
@@ -50,6 +64,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.request({
+      url:'http://123.207.32.32:8000/api/wh/recommend',
+      success:(res)=>{
+        console.log(res)
+        const data = res.data.data.list;
+        this.setData({
+          list:data
+        })
+      }
+    })
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
 
   },
 
@@ -57,13 +88,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
 
   },
 
@@ -100,5 +124,18 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+//----------监听wxml中相关的一些事件------
+  handleViewClick(){
+    console.log("Lisa榕被点了")
+  },
+
+  // ---------其他事件------------
+  // 监听页面滚动
+  onPageScroll(obj){},
+  //监听页面滚动到顶部
+  onReachBottom(){},
+  onPullDownRefresh(){
+    console.log('下拉刷新的事件');
   }
 })
