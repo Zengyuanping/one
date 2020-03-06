@@ -1,4 +1,16 @@
 /* pages/home/home.wxss */
-view{
-  color:rgb(104, 104, 84);
+.title{
+  color:pink;
+}
+
+.red{
+  color:red;
+}
+
+.blue{
+  color: blue;
+}
+
+.green{
+  color: green;
 }
